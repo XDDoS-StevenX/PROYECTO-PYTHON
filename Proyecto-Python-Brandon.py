@@ -2,79 +2,89 @@
 
 #1 PASO:
 
-Camper_1 = {
+campers = []
 
-   "«•»------------(∘)------------«•» «•»------------(∘)------------«•» «•»------------(∘)------------«•»",
-                                  "N° Identificacion:" "5553228779",
-                                       "Nombres:" "Andres Galan",
-                                    "Apellidos:" "Gomez Albarra",
-                                   "Direccion:" "Carrera 12 #154-24",
-                                     "Acudiente:" "Adam Noruega.",
-                         "Telefono de contacto:" "7788246513 / Fijo: 1324456243",
-                                        "Estado:" "Inscrito",
-                                        "Riesgo:" "Ninguno.",
-                                          "Ruta: NetCore"
-}
 
-Camper_2 = {
+def añadir_camper(nombre, priority=5):
+    if any(camper['nombre'] == nombre for camper in campers):
+        print("Error: El camper ya existe.")
+        return
+    nuevo_camper = {'nombre': nombre, 'priority': priority}
+    campers.append(nuevo_camper)
+    print(f"Camper '{nombre}' añadid@ correctamente.")
 
-   "«•»------------(∘)------------«•» «•»------------(∘)------------«•» «•»------------(∘)------------«•»",
-                                   "N° Identificacion:" "2005784832",
-                                      "Nombres:" "Michael Steven",
-                                      "Apellidos:" "Nieves Guerra",
-                                    "Direccion:" "Carrera 24 #11-52",
-                                     "Acudiente:" "Mikhail Torres.",
-                          "Telefono de contacto:" "6215584931 / Fijo: 20025620145",
-                                        "Estado:" "Pendiente",
-                                        "Riesgo:" "Ninguno.",
-                                         "Ruta: Pendiente."
-   }
 
-Camper_3 = {
+def mostrar_campers():
+    if not campers:
+        print("No hay tareas pendientes.")
+    else:
+        print("Tareas Pendientes:")
+        for task in sorted(campers, key=lambda x: x['riesgo'], reverse=True):
+            print(f"{campers['nombre']} - Prioridad: {campers['riesgo']}")
 
-   "«•»------------(∘)------------«•» «•»------------(∘)------------«•» «•»------------(∘)------------«•»",
-                                    "N° Identificacion:" "1245624587",
-                                       "Nombres:" "Adam Minguez",
-                                      "Apellidos:" "Mingo Santos",
-                                   "Direccion:" "Carrera 11 #21-04",
-                                    "Acudiente:" "Sebastian Muriel.",
-                          "Telefono de contacto:" "10034256455. Fijo: 4085320958",
-                                          "Estado:" "Cursando",
-                                        "Riesgo:" "Condicional.",
-                                              "Ruta:" "Java", 
-}
 
-Camper_4 = {
+def remover_camper(name):
+    for camper in mostrar_campers[:]:
+        if camper['name'] == name:
+            mostrar_campers.remove(camper)
+            print(f"Tarea '{name}' eliminada correctamente.")
+            return
+    print("Error: La tarea no se encontró.")
 
-   "«•»------------(∘)------------«•» «•»------------(∘)------------«•» «•»------------(∘)------------«•»",
-                                     "N° Identificacion:" "1004523118",
-                                      "Nombres:" "Bartolome Arevalo",
-                                       "Apellidos:" "Muñoz Fuentes",
-                                    "Direccion:" "Carrera 32 #22-31",
-                                      "Acudiente:" "Cesar Climent.",
-                          "Telefono de contacto:" "10597564521. Fijo: 1324867952",
-                                           "Estado:" "Aprobado",
-                                           "Riesgo:" "Ninguno.",
-                                              "Ruta:" "NodejS",
-}
 
-Camper_5 = {
+while True:
+    
+    print("\n ˜”*°•.˜”*°• ▁ ▂ ▄ ▅ ▆ ▇ █ MENU PRINCIPAL █ ▇ ▆ ▅ ▄ ▂ ▁ •°*”˜.•°*”˜")
+    print("1. ᴀñᴀᴅɪʀ ᴜɴ/ᴀ ɴᴜᴇᴠᴏ/ᴀ ᴄᴀᴍᴘᴇʀ.")
+    print("2. (っ◔◡◔)っ Mostrar todos los campers.")
+    print("3. 𝔼𝕝𝕚𝕞𝕚𝕟𝕒𝕣 un 𝕔𝕒𝕞𝕡𝕖𝕣.")
+    print("4. Salir.")
+    
+    print("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿")
+    print("⣿⣿⣿⠛⢻⣿⣿⣿⣿⠿⠛⡿⠀⠀⠀⠀⠀⠀⢿⠛⠿⣟⣻⡿⠛⠻⣿⣿⣿⣿")
+    print("⣿⣿⣿⡆⣾⣿⣿⠟⠁⠀⣀⣇⣀⣠⣤⣤⣄⣀⣸⣀⠀⠈⠻⣧⣀⣀⣿⣿⣿⣿")
+    print("⣿⣿⣿⡇⣿⣿⠋⢀⣾⠟⠉⢉⣭⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀⠙⣿⣉⢿⣿⣿⣿")
+    print("⣿⣿⣿⡿⣿⠇⢠⣿⠁⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠸⣿⢿⣿⣿⣿")          
+    print("⣿⣿⠇⢰⡟⠀⣾⡇⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀⢻⡆⠸⣿⣿") 
+    print("⣿⣿⠀⢸⡇⢰⣿⠀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡆⢸⡇⠀⣿⣿")        
+    print("⣿⣧⡀⢸⡇⠘⣿⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⢸⡇⢀⣼⣿          ✈ 𓆙𓆙")     
+    print("⣿⣿⣿⣾⣇⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⣸⣷⣿⣿⣿")
+    print("⣿⣿⣿⣿⣿⣄⠈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠁⣠⣿⣿⣿⣿⣿")
+    print("⣿⣿⣿⣿⣿⣿⣦⡀⠈⠛⠿⠿⣿⣿⣿⣿⣿⣿⠿⠿⠛⠁⢀⣴⣿⣿⣿⣿⣿⣿")
+    print("⣿⣿⣿⣿⣿⡃⠈⠛⠷⣦⣤⣀⣀⣀⠀⠀⣀⣀⣀⣤⣴⠾⠛⠁⢘⣿⣿⣿⣿⣿")
+    print("⣿⣿⠟⠋⠈⠙⠷⣦⣤⣀⡈⠉⢹⡟⠛⠛⢻⡏⠉⢁⣀⣤⣴⠾⠋⠁⠙⠻⣿⣿")
+    print("⣿⠀⠀⠀⠀⠀⠀⠀⠈⠉⠙⠛⠛⠷⠶⠶⠾⠛⠛⠋⠉⠁⠀⠀⠀⠀⠀⠀⠀⣿")
+    print("⣿⣤⣤⣼⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣧⣤⣤⣿")
+    print("█▀▀ ▄▀█ █▀▄▀█ █▀█ █░█ █▀ █░░ ▄▀█ █▄░█ █▀▄ █▀")
+    print("█▄▄ █▀█ █░▀░█ █▀▀ █▄█ ▄█ █▄▄ █▀█ █░▀█ █▄▀ ▄█")
 
-   "«•»------------(∘)------------«•» «•»------------(∘)------------«•» «•»------------(∘)------------«•»",
-                                    "N° Identificacion:" "1200654320",
-                                     "Nombres:" "Mariano Canales",
-                                      "Apellidos:" "Biel Morilla",
-                                    "Direccion:" "Carrera 19 #54-55",
-                                      "Acudiente:" "Eliseo Trillo.",
-                           "Telefono de contacto:" "2265513002. Fijo: 40003215650",
-                                         "Estado:" "Expulsado",
-                                          "Riesgo:" "Ninguno.",
-                                            "Ruta:" "Ninguna."
+    
+    option = input("Seleccione una opción (1-4): ")
 
-    }
 
-print(Camper_1)
-print(Camper_2)
-print(Camper_3)
-print(Camper_4)
-print(Camper_5)
+    if option == '1':
+        camper_nombre = input("Ingrese el nombre del camper: ")
+        try:
+            camper_prioridad = int(input("Ingrese la prioridad de la tarea (por defecto es 5): "))
+        except ValueError:
+            print("Error: El riesgo debe ser neutro o condicinal. Se utilizará el riesgo por defecto.")
+            task_priority = 5
+        añadir_camper(camper_nombre, camper_prioridad)
+
+
+    elif option == '2':
+        mostrar_campers()
+
+
+    elif option == '3':
+        camper_nombre = input("Ingrese el nombre de la tarea a eliminar: ")
+        remover_camper(camper_nombre)
+
+
+    elif option == '4':
+        print("🅴🆂🆃🅰🆂 🆂🅰🅻🅸🅴🅽🅳🅾 🅳🅴🅻 🅿🆁🅾🅶🆁🅰🅼🅰, 🅷🅰🆂🆃🅰 🅻🆄🅴🅶🅾!")
+        break
+
+
+    else:
+        print("Error: Opción no válida. Por favor, seleccione una opción del 1 al 4.") 
